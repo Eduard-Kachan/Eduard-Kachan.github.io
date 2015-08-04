@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <!-- ------------------------------->
+  <!-- Website developed by Eduard Kachan-->
+  <!-- Preprocessors used are Jade and Stylius-->
+  <!-- ------------------------------->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Eduard Kachan | Portfolio | Spaceship Control Panel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, minimal-ui">
+  <link rel="stylesheet" href="../assets/styles/prism.css" type="text/css">
+  <link rel="stylesheet" href="../assets/styles/styles.css" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Lato:400,700,900" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Noto+Serif:400" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Noto+Sans:400,700" rel="stylesheet" type="text/css">
+  <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
+  <!-- ------------------------------->
+  <!-- Body-->
+  <!-- ------------------------------->
+  <body>
+    <div class="wrapper">
+      <aside id="sideBar">
+        <h1><a href="../index.html">Eduard Kachan</a></h1>
+        <nav><a href="spaceship-control-panel.html" class="current">Spaceship Control Panel</a><a href="led-wall-art.html">LED Wall Art</a><a href="flex-box-page.html">FlexBox Page</a><a href="klink-it.html">Klink It</a><a href="checkers.html">Checkers</a><a href="seasonal-food.html">Seasonal Food Infographic</a><a href="../about.html" class="about">About</a></nav>
+        <ul class="socialMedia">
+          <li><a href="https://twitter.com/EdVAardian" target="_blank" class="twitter"></a></li>
+          <li><a href="https://github.com/Eduard-Kachan" target="_blank" class="github"></a></li>
+          <li><a href="https://www.linkedin.com/in/eduardkachan" target="_blank" class="linkedin"></a></li>
+        </ul>
+      </aside>
+      <section class="work">
+        <div class="container">
+          <div class="mobileHeader">
+            <button id="menu" class="menu">Menu</button>
+            <h1><a href="index.html">Eduard Kachan</a></h1>
+          </div>
+          <header>
+            <h2>Portfolio</h2>
+          </header><img src="../assets/images/spaceship-control-panel-hero.jpg" class="projectBanner">
+          <!-- ------------------------------->
+          <!-- Content-->
+          <!-- ------------------------------->
+          <article>
+            <header>
+              <h1>Spaceship Control Panel</h1>
+            </header>
+            <!-- a(href = '../FlexBox/index.html' target = '_blank').more Visit page &#8594;-->
+            <p>Spaceship Control Panel is a collaboration work between six people, Tanya, Lana, Stefano, Hemachandra, Tristan, and me for the Humber Vanguard portfolio show. The goal of this project was to create an easier way for the industry people that are coming in to connect with the graduates. The challenge was to something that would impress the people at the event and want to interact with it but not to distract. What was done is a big projection on the wall that interacts with the arduino. On the protection we have three students with a name and job title that are laid out in columns and on the arduino side we have three buttons. This operates like a slot machine when a person would press a button on the screen it would roll random students. The buttons correspond to designers, developers and everybody.</p>
+            <h2>My position and development</h2>
+            <p>I was assigned to the Front End development. The goal for me was to create the layout that was delivered to me by a designer and connect it with the back end developer code. The HTML was simple it was only three sections and inside is the oriented with CSS. The animation was far more tricky, I have wanted to use CSS3 animation to control the transitions this way I make it as simple as possible and don't have to rely on any frameworks.</p>
+            <p>Blinking lights on helmets were done by using an SVG with circles. A CSS class is assigned to each circle for targeting and assigning random blinking duration. But also all the lights have the same base CSS style for a general control.</p>
+            <p>The background stars are created using jquery to add divs to a body and custom CSS is inserted into the div to make the stars more random and dynamic. And only a general class is added to control the animation and style.</p>
+            <pre class="language-javascript javascript"><code>var starColors = ['White', 'LightBlue', 'LightYellow'];
+
+for (var i = 0; i < 1000; i++){
+    var width = Math.random()*2+1;
+    var duration = Math.random()*10+10;
+    var delay = Math.random()*5+5;
+    var color = Math.floor(Math.random()*3);
+    $('.stars').append( '&ltdiv&gt' +
+        ' class="star"' +
+        ' style="' +
+            'width:' + width + 'px;' +
+            'height:' + width + 'px;' +
+            'top:' + Math.random()*100 + '%;' +
+            'left:' + Math.random()*100 + '%;' +
+            'background:' + starColors[color] +
+            'animation-delay:' + delay + 's;' +
+            'animation-duration:' + duration + 's;' +
+        '"&gt' +
+        '&lt/div&gt');
+}
+</code></pre>
+            <p>Sliding and transitioning the students was the hardest part, but eventually I figured out the most simplest and straightforward way. To start off I have a key frame animation for both sliding in and sliding out and css class that add them to the main student class. In the code I add one class and after a delay I add another. What I had the most issues with was trying to add a delay so they come one after another, what was the problem is once the animation has stopped and it was time to switch classes the cards would flash on the screen. The fix to this was to add a starting position to the class that add the animation and all the bugs were fixed. :)</p>
+            <pre class="language-css css"><code>section.first{animation-delay: 0s;}
+section.second{animation-delay: 0.2s;}
+section.third{animation-delay: 0.4s;}
+section.slideOut {
+    animation-name: slideOutAnim;
+    transform: translateY(0);
+    opacity: 1;
+}
+section.slideIn {
+    animation-name: slideInAnim;
+    transform: translateY(-150%);
+    opacity: 0;
+}
+@keyframes slideOutAnim {
+    from {transform: translateY(0);opacity: 1;}
+    to {transform: translateY(150%);opacity: 0;}
+}
+@keyframes slideInAnim {
+    from {transform: translateY(-150%);opacity: 0;}
+    to {transform: translateY(0);opacity: 1;}
+}
+</code></pre>
+            <pre class="language-javascript javascript"><code>function showData(data) {
+    // add slide out animation
+    $('section').removeClass('slideIn').addClass('slideOut');
+
+    // wait until animation finishes + the largest delay
+    window.setTimeout(function(){
+
+        $('section').each(function(index, element) {
+
+            // [code...] replace student data to a new student
+
+        }).removeClass('slideOut').addClass('slideIn');
+        // add slide in animation
+    }, 1400);
+}</code></pre>
+          </article>
+        </div>
+      </section>
+    </div>
+    <!-- ------------------------------->
+    <!-- Scripts-->
+    <!-- ------------------------------->
+    <script type="text/javascript" src="../assets/scripts/prism.js"></script>
+    <script type="text/javascript" src="assets/scripts/main.js"></script>
+  </body>
+</html>
