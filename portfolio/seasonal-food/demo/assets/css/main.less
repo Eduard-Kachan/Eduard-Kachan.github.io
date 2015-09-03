@@ -1,0 +1,233 @@
+@import 'styles/brand.less';
+@import 'styles/typography.less';
+@import 'styles/grid.less';
+@import 'styles/mixins.less';
+html{
+	height: 100%;
+	min-height: 700px;
+}
+body{
+	position: relative;
+	height: 100%;
+	background: url(../images/broken_noise.png)
+}
+.texture{
+	width: 100%;
+	height: 100%;
+	background: url(../images/black-grain.png);
+	position:absolute;
+	z-index: 99;
+	pointer-events:none;
+}
+header#header{
+	width: 460px;
+	overflow: hidden;
+	position: absolute;
+	left: 50%;
+	top: 20px;
+	margin-left: -230px;
+	color: #e1b866;
+	.secondary{
+		text-align: right;
+	}
+}
+.wrapper{
+	width: 940px;
+	height: 460px;
+	position: absolute;
+	top: 50%;
+	margin-top: -230px;
+	padding-top: 39px;
+	margin-left: -470px;
+	.list{
+		margin-top: 75px;
+		width: 140px;
+		height: auto;
+		line-height: 34px;
+	}
+	.left{float: left;}
+	.right{float: right;}
+	.lines{
+		position: relative;
+		.line{
+			position: absolute;
+			pointer-events:none;
+			z-index: 55;
+		}
+
+	}
+	.chart{
+		width: 460px;
+		height: 460px;
+		margin: 0 auto;
+		position: relative;
+		.title{
+			position: absolute;
+			left:121px;
+			top:182px;
+		}
+		.graf-bars{
+			position: relative;
+			width: 100%;
+			height: 100%;
+			img{
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		}
+		.month{
+			width: 500px;
+			height: 500px;
+			margin: -20px;
+			margin-top: -480px;
+			background: url(../images/month.png)
+		}
+	}
+}
+
+#fruts{
+	left: 50%;
+}
+#vegetables1{
+	left: 150%;
+}
+#vegetables2{
+	left: 250%;
+}
+#conOrien{
+	width: 620px;
+	position: absolute;
+	bottom: 10px;
+	left:50%;
+	margin-left: -310px;
+	li{
+		display: inline-block;
+		font-size: 35px;
+		padding:0 23px;
+		color: #7aa243;
+		&:first-child{
+			padding-left: 0;
+			color: #a04f42;
+		}
+		&:last-child{
+			padding-right: 0;
+			color: #856e3c;
+		}
+		&:hover{
+			cursor: pointer;
+		}
+	}
+}
+
+.list{
+	.apples{color: #bd5532}
+	.apricots{color: #bd9432}
+	.blueberries{color: #329bbd}
+	.cherries{color: #bc3232}
+	.crabapples{color: #bd4232}
+	.cranberries{color: #bd9b32}
+	.currants{color: #bd9b32}
+	.gooseberries{color: #6dbd32}
+	.grapes{color: #5932bd}
+	.muskmelon{color: #bdb232}
+	.nectarines{color: #bd5632}
+	.peaches{color: #bd6632}
+	.pears{color: #91bd32}
+	.plums{color: #6332bd}
+	.raspberries{color: #b43232}
+	.rhubarb{color: #97bd32}
+	.strawberries{color: #b43232}
+	.watermelon{color: #91bd32}
+	.artichoke{color: #73bd32 }
+	.asparagus{color: #94bd32 }
+	.beans{color: #bd4f32 }
+	.beets{color: #bd3270 }
+	.bokchoy{color: #97bd32}
+	.broccoli{color: #35bd32 }
+	.brusselsSprouts{color: #32bd4c }
+	.cabbage{color: #84bd32 }
+	.carrots{color: #bd7032 }
+	.cauliflower{color: #b7bd6a }
+	.celery{color: #5dbd32 }
+	.corn{color: #bdb232 }
+	.cucumber{color: #5dbd32 }
+	.eggplant{color: #9b32bd }
+	.garlic{color: #bd7457}
+	.leeks{color: #66bd32 }
+	.lettuce{color: #32bd39 }
+	.mushrooms{color: #bd6332 }
+	.onions{color: #bd8032 }
+	.parsnips{color: #bda832 }
+	.peppers{color: #35bd32 }
+	.potatoes{color: #bd3232 }
+	.pumpkin{color: #bd7a32 }
+	.radicchio{color: #bd3284 }
+	.radishes{color: #bd3232 }
+	.rapini{color: #32bd32 }
+	.rutabaga{color: #bd3284 }
+	.spinach{color: #32bd56 }
+	.sprouts{color: #94bd32 }
+	.squash{color: #bd8a32 }
+	.sweetpotatoes{color: #bd7332 }
+	.tomatoes{color: #bd7332 }
+	.zucchini{color: #687251 }
+}
+.lines{
+	li img{opacity: 0;}
+}
+
+
+
+
+
+
+
+
+
+.title-animation-outro{
+	animation: tilteOutro 1.75s ease;
+	-webkit-animation: tilteOutro 1.75s ease;
+}
+@-webkit-keyframes tilteOutro {
+	from {.tilte-intro-properties()}
+	to {.tilte-outro-properties()}
+}
+.title-animation-intro{
+	animation: tilteIntro 0.75s ease 1s;
+	-webkit-animation: tilteIntro 0.75s ease 1s;
+}
+@-webkit-keyframes tilteIntro {
+	from {.tilte-outro-properties()}
+	to {.tilte-intro-properties()}
+}
+
+.chart-animation-outro{
+	animation: chartOutro 1s ease 0.75s;
+	-webkit-animation: chartOutro 1s ease 0.75s;
+}
+@-webkit-keyframes chartOutro {
+	from {.chart-intro-properties()}
+	to {.chart-outro-properties()}
+}
+.chart-animation-intro{
+	animation: chartOutro 1s ease 0.75s;
+	-webkit-animation: chartOutro 1s ease 0.75s;
+}
+@-webkit-keyframes chartOutro {
+	from {.chart-outro-properties()}
+	to {.chart-intro-properties()}
+}
+
+
+
+.rotate {
+  -webkit-transform: rotate(-180deg);  /* Chrome, Safari 3.1+ */
+     -moz-transform: rotate(-180deg);  /* Firefox 3.5-15 */
+      -ms-transform: rotate(-180deg);  /* IE 9 */
+       -o-transform: rotate(-180deg);  /* Opera 10.50-12.00 */
+          transform: rotate(-180deg);  /* Firefox 16+, IE 10+, Opera 12.50+ */
+}
+.transition {
+    /* Chrome 26, Firefox 16+, IE 10+,*/
+}

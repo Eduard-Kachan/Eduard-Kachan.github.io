@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Eduard Kachan | Checkers</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, minimal-ui">
+  <link href="http://fonts.googleapis.com/css?family=Lato:400,700,900" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Noto+Serif:400" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Noto+Sans:400,700" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="../../assets/styles/prism.css" type="text/css">
+  <link rel="stylesheet" href="../../assets/styles/styles.css" type="text/css">
+  <link rel="icon" href="../../assets/images/favicon.ico" type="image/x-icon">
+  <body>
+    <div class="wrapper">
+      <aside id="sideBar">
+        <h1><a href="../index.html">Eduard Kachan</a></h1>
+        <nav><a href="../spaceship-control-panel">Spaceship Control Panel</a><a href="../led-wall-art">LED Wall Art</a><a href="../flex-box-page">FlexBox Page</a><a href="../klink-it">Klink It</a><a href="../checkers" class="current">Checkers</a><a href="../seasonal-food">Seasonal Food Infographic</a><a href="../../about.html" class="about">About</a></nav>
+        <ul class="socialMedia">
+          <li><a href="https://twitter.com/EdVAardian" target="_blank" class="twitter"></a></li>
+          <li><a href="https://github.com/Eduard-Kachan" target="_blank" class="github"></a></li>
+          <li><a href="https://www.linkedin.com/in/eduardkachan" target="_blank" class="linkedin"></a></li>
+        </ul>
+      </aside>
+      <section class="work">
+        <div class="container">
+          <div class="mobileHeader">
+            <button id="menu" class="menu">Menu</button>
+            <h1><a href="index.html">Eduard Kachan</a></h1>
+          </div>
+          <header>
+            <h2>Checkers</h2>
+          </header><img src="../../assets/images/checkers-hero.jpg" class="projectBanner">
+          <article>
+            <header>
+              <h1>Checkers</h1><a href="demo" target="_blank" class="more">View demo &#8594;</a>
+            </header>
+            <p>Checkers is a project that shows off my knowledge in OOP with Javascript. Rendered in canvas using sprite images that reduces the load time. Separated in to objects in order to be more concise. I was interested in taking on this projects because of the the simple mechanics that allowed me to manage the scope and nostalgic value. The project is available online and on <a href= 'https://github.com/Eduard-Kachan/Checkers' target = '_blank'>GitHub</a>.</p>
+            <h2>Object Structure</h2>
+            <p>I have created my objects with in mind that they would contain certain areas of the game. They are also physical and ideological parts of the real checkers board game. The first object and what contains everything, the Game object. Its job is to maintain and contain all other objects, such as getting pieces, checking turns and understanding on what tile the user meant to click. The next object is the Grid object and it manages everything that is happening on the board and how the board is laid out. The last object is the Piece object and it is the representation of an individual set pieces on the board. Just like the real thing it has a color, rank and position.</p>
+            <h2>Canvas Rendering</h2>
+            <p>Canvas is a pretty cool thing and there were a lot thing that I didn't know before I started this project. One of the things that I took for granted was the render cycle in other game engines. I initially had the idea of setting it up so that the screen would only change if something updated, but I later realised thats its much easier to have the canvas be constantly updating. And this is how my render is setup.</p>
+            <p>One of the main things to have is the update loop and like anywhere I have used Paul Irish's requestAnimationFrame method.</p>
+            <p>Next I added a resource loading method to my code that I took from canvas tutorial. It very simple to use.</p>
+            <pre class="language-javascript javascript"><code>//To load the assets
+resources.load([
+    'image1.png',
+    'image2.png'
+]);
+
+//When assets are ready run the initialization
+resources.onReady(init);
+
+//Getting the images
+resources.get('image1.png');
+</code></pre>
+            <p>I found this to be a very easy way to load images into the projects. The last part was to render the them. To achieve this I had a render function that was inside each object and one called it will draw the sprite on to the canvas.  And the function that is in the loop calls all render functions.</p>
+            <pre class="language-javascript javascript"><code>// Render method is inside of objects
+render: function(){
+    // Call the canvas to draw the image ...
+    this.ctx.drawImage(resources.get('image1.png'), 32, 0, 32, 32, 0, 0, 32,32);
+};
+
+// Function setup on the top level
+function main() {
+    // Call all the render methods ...
+    requestAnimFrame(main);
+}
+main();
+</code></pre>
+          </article>
+        </div>
+      </section>
+    </div>
+    <script type="text/javascript" src="../assets/scripts/main.js"></script>
+    <script type="text/javascript" src="../../assets/scripts/prism.js"></script>
+  </body>
+</html>

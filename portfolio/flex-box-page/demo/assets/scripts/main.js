@@ -1,0 +1,1 @@
+$( 'nav li:has(a + div)' ).doubleTapToGo();
