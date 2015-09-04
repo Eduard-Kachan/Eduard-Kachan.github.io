@@ -1,0 +1,54 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+.game{
+    width:500px;
+    margin: 0 auto;
+    position: relative;
+}
+
+header, footer{
+    overflow: auto;
+}
+
+button{
+    height: 100%;
+    float: left;
+    padding: 10px;
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+.time{
+    height: 100%;
+    float: left;
+    padding: 10px;
+    font-size: 1rem
+}
+
+.message{
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    font-size: 2rem;
+    text-transform: uppercase;
+    text-align: center;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    display: block;
+}
+
+
+canvas{
+    border: solid black 1px;
+}
